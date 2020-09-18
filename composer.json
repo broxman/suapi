@@ -1,0 +1,21 @@
+{
+    "name": "serviceuptime/api",
+    "description": "PHP Library for ServiceUptime.com API (https://www.serviceuptime.com/users/api-docs.php)",
+    "license": "MIT",
+    "keywords": ["serviceuptime", "service uptime", "serviceuptime api", "php serviceuptime api", "service uptime api", "uptime api"],	
+	"homepage": "https://github.com/serviceuptime/api",
+    "type": "library",
+    "stability":"stable",
+    "require": {
+        "php": ">=7"
+    },	
+    "support": {
+        "issues": "https://www.serviceuptime.com/contact.php"
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "ServiceUptime\\API\\": "src/"
+        }
+    }	
+} 
