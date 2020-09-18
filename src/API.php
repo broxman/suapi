@@ -1,8 +1,11 @@
 <?php
+
+namespace ServiceUptime\API;
+
 /**
  * Class for work with ServiceUptime API
  */
-class SUAPI
+class API
 {
 	// default wsdl url
     protected $_url = 'https://www.serviceuptime.com/api/';
@@ -13,7 +16,7 @@ class SUAPI
 
 	/**
 	 */
-	protected function __construct($apikey)
+	public function __construct($apikey)
 	{
 	    $this->_apikey = $apikey;
 	}

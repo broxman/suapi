@@ -79,6 +79,9 @@ Add ServiceUptime API to your `composer.json` file.
 ```php
 <?php
     $monitor = $suapi->updateMonitor([
+		"Id" => "234342",
+		"ServiceType" => "http",
+		"Port" => "80",
     ]);
     print_r($monitor);
 ?>
@@ -87,27 +90,30 @@ Add ServiceUptime API to your `composer.json` file.
 ### Remove monitor from your ServiceUptime account
 ```php
 <?php
-    $monitor = $suapi->deleteMonitor([
+    $result = $suapi->deleteMonitor([
+        "Id" => "234342",
     ]);
-    print_r($monitor);
+    print_r($result);
 ?>
 ```
 
 ### Retrieve all your monitors information including uptime statistics summary and current status info
 ```php
 <?php
-    $monitor = $suapi->getMonitors([
-    ]);
-    print_r($monitor);
+    $monitors = $suapi->getMonitors();
+    print_r($monitors);
 ?>
 ```
 
 ### Retrieve detailed uptime report for your monitor
 ```php
 <?php
-    $monitor = $suapi->getReport([
+    $report = $suapi->getReport([
+        "Id" => "367168",
+        "from_date" => "2019-11-01",
+        "to_date" => "2019-11-07",
     ]);
-    print_r($monitor);
+    print_r($report);
 ?>
 ```
 
@@ -115,6 +121,7 @@ Add ServiceUptime API to your `composer.json` file.
 ```php
 <?php
     $monitor = $suapi->monitorInfo([
+        "Id" => "367168",
     ]);
     print_r($monitor);
 ?>
@@ -123,27 +130,28 @@ Add ServiceUptime API to your `composer.json` file.
 ### Start monitoring for a paused monitor
 ```php
 <?php
-    $monitor = $suapi->startMonitor([
+    $result = $suapi->startMonitor([
+        "Id" => "367168",
     ]);
-    print_r($monitor);
+    print_r($result);
 ?>
 ```
 
 ### Pause monitoring for a monitor
 ```php
 <?php
-    $monitor = $suapi->stopMonitor([
+    $result = $suapi->stopMonitor([
+        "Id" => "367168",
     ]);
-    print_r($monitor);
+    print_r($result);
 ?>
 ```
 
 ### Retrieve account information such as number of SMS credits, available monitors, default email alert, etc.
 ```php
 <?php
-    $monitor = $suapi->accountInfo([
-    ]);
-    print_r($monitor);
+    $account = $suapi->accountInfo();
+    print_r($account);
 ?>
 ```
 
