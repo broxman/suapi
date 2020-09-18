@@ -62,9 +62,17 @@ class API
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
-        $result = curl_exec($ch);
-        if (!$result){
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+        $response = json_decode(curl_exec($ch), true);
+        if (!$response){
             $this->_lasterror = 'Error: "' . curl_error($ch) . '" - Code: ' . curl_errno($ch);
+        }
+        elseif ($response['status'] == 'success'){
+            $result = $response['data'];
+        }
+        else {
+            $this->_lasterror = 'Error: "' . $response['err_code'] . '" - Code: ' . $response['err_msg'];
         }
         curl_close($ch);
 
